@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Boleta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="22829e98-d280-455d-8665-45bc650e6058">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion"/>
+	<parameter name="IDBOL" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT ENTRADAS, P.NOMBRE, COMBO, H.NOMBRE, IMPORTE FROM BOLETA
+INNER JOIN PELICULA P on P.IDPEL = BOLETA.IDPEL
+INNER JOIN COMIDA C on BOLETA.IDCOM = C.IDCOM
+INNER JOIN HORARIO H on BOLETA.IDHOR = H.IDHOR
+WHERE IDBOL = $P{IDBOL}]]>
+	</queryString>
+	<field name="ENTRADAS" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ENTRADAS"/>
+		<property name="com.jaspersoft.studio.field.label" value="ENTRADAS"/>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="COMBO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="COMBO"/>
+		<property name="com.jaspersoft.studio.field.label" value="COMBO"/>
+	</field>
+	<field name="COLUMN_4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="IMPORTE" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="IMPORTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="IMPORTE"/>
+	</field>
+	<group name="ENTRADAS">
+		<groupExpression><![CDATA[$F{ENTRADAS}]]></groupExpression>
+	</group>
+	<group name="NOMBRE">
+		<groupExpression><![CDATA[$F{NOMBRE}]]></groupExpression>
+	</group>
+	<group name="COMBO">
+		<groupExpression><![CDATA[$F{COMBO}]]></groupExpression>
+	</group>
+	<group name="COLUMN_4">
+		<groupExpression><![CDATA[$F{COLUMN_4}]]></groupExpression>
+	</group>
+	<group name="IMPORTE">
+		<groupExpression><![CDATA[$F{IMPORTE}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="20" width="310" height="50" uuid="fb503ac3-7129-4fce-b071-23dbf0f1df33"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="34"/>
+				</textElement>
+				<text><![CDATA[Boleta - Cine VG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="159" splitType="Stretch">
+			<textField>
+				<reportElement x="240" y="0" width="100" height="30" uuid="7e70b040-863e-4c85-b493-7198090f4fd4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="caf6d2e1-bbfb-4aa4-a9c5-6acdab526a00"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENTRADAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="30" width="330" height="30" uuid="ea03d43f-10a5-409b-96a7-e8dea21f691d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aeb6bc7b-c8c0-45e3-a9b3-726968d28720"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="60" width="330" height="30" uuid="c58ae75b-0a10-4b86-a2d2-14afbb2a759a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b46eacfa-795c-47bb-b378-a9515ffec4f5"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COMBO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="90" width="120" height="30" uuid="127122af-5972-4d3c-8a06-b1a210f5d9a9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9f5b9de-e4cd-4f23-9289-fc17103d0e6a"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IMPORTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="90" width="111" height="30" uuid="850e843a-64ac-4509-a04e-bf3688eebc5c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b9f5b9de-e4cd-4f23-9289-fc17103d0e6a"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Importe Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="120" width="111" height="30" uuid="9ebab2b4-5f6c-4893-be50-3a58d077a16b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8060385f-bc31-44a8-bf0a-e4ffaf580e55"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Fecha y Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="60" width="111" height="30" uuid="e9f03957-e57c-4bfc-b482-110ece335258">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b46eacfa-795c-47bb-b378-a9515ffec4f5"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Combo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="30" width="111" height="30" uuid="f9ad092b-fb53-46a6-b6b4-dd04b470322d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aeb6bc7b-c8c0-45e3-a9b3-726968d28720"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Pelicula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="111" height="30" uuid="06919ad9-0720-4572-9912-7c2b616fd9b3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="caf6d2e1-bbfb-4aa4-a9c5-6acdab526a00"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Entradas]]></text>
+			</staticText>
+			<textField pattern="HH:mm">
+				<reportElement x="240" y="120" width="169" height="30" uuid="919319ad-378c-4f76-9dae-e49646c3aa27"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="280" y="120" width="219" height="30" uuid="3885a35c-e171-46f2-a924-a13b09900e1f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

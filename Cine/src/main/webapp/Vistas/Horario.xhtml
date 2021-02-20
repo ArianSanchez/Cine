@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:facet name="second">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Cine</title>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <!--MENU-->
+        <h:form id="menu">
+            <p:tabMenu activeIndex="3">
+                <p:menuitem value="Principal" outcome="/index.xhtml"/>
+                <p:menuitem value="Pelicula" outcome="/Vistas/Pelicula.xhtml"/>
+                <p:menuitem value="Comida" outcome="/Vistas/Comida.xhtml"/>
+                <p:menuitem value="Horario" outcome="/Vistas/Horario.xhtml"/>
+                <p:menuitem value="Boleta" outcome="/Vistas/Boleta.xhtml"/>
+            </p:tabMenu>                           
+        </h:form>
+
+        <!--REGISTRAR HORARIO-->
+        <p:growl  showDetail="true" id="mensaje"><p:autoUpdate/></p:growl>
+        <h:form id="uno">
+            <p:panelGrid id="Datos" columns="2">
+                <p:outputLabel value="Días"/>
+                <p:inputText size="30" value="#{horarioC.horario.NOMBRE}"></p:inputText>
+                <p:outputLabel value="Descripción"/>
+                <p:inputText size="30" value="#{horarioC.horario.DESCRIPCION}"></p:inputText>
+                <p:outputLabel value="Precio"/>
+                <p:inputText size="30" value="#{horarioC.horario.PRECIO}"></p:inputText>
+            </p:panelGrid>
+            <p:commandButton value="GUARDAR" actionListener="#{horarioC.registrar()}" update=":dos,mensaje"/>
+        </h:form>
+
+        <!--LISTAR HORARIO-->
+
+        <h:form id="dos">
+            <p:dataTable value="#{horarioC.listaHorario}" rows="10" paginator="true" var="lista" id="LDatos">
+                <p:column headerText="Peliculas" 
+                          sortBy="#{lista.NOMBRE}"                       
+                          style="font-weight: bold">
+                    <h:outputLabel value="#{lista.NOMBRE}" style="font-weight: normal" />
+                </p:column>
+                <p:column headerText="Descripción" 
+                          sortBy="#{lista.DESCRIPCION}"                       
+                          style="font-weight: bold">
+                    <h:outputLabel value="#{lista.DESCRIPCION}" style="font-weight: normal" />
+                </p:column>
+                <p:column headerText="Precio" 
+                          sortBy="#{lista.PRECIO}"                       
+                          style="font-weight: bold">
+                    <h:outputLabel value="#{lista.PRECIO}" style="font-weight: normal" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+
+</html>

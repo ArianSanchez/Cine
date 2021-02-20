@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:facet name="second">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Cine</title>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <!--MENU-->
+        <h:form id="menu">
+            <p:tabMenu activeIndex="2">
+                <p:menuitem value="Principal" outcome="/index.xhtml"/>
+                <p:menuitem value="Pelicula" outcome="/Vistas/Pelicula.xhtml"/>
+                <p:menuitem value="Comida" outcome="/Vistas/Comida.xhtml"/>
+                <p:menuitem value="Horario" outcome="/Vistas/Horario.xhtml"/>
+                <p:menuitem value="Boleta" outcome="/Vistas/Boleta.xhtml"/>
+            </p:tabMenu>                           
+        </h:form>
+
+        <!--REGISTRAR COMIDA-->
+        <p:growl  showDetail="true" id="mensaje"><p:autoUpdate/></p:growl>
+        <h:form id="uno">
+            <p:panelGrid id="Datos" columns="2">
+                <p:outputLabel value="Combo"/>
+                <p:inputText size="30" value="#{comidaC.comida.COMBO}"></p:inputText>
+                <p:outputLabel value="Precio"/>
+                <p:inputText size="5" value="#{comidaC.comida.PRECIO}"></p:inputText>
+            </p:panelGrid>
+            <p:commandButton value="GUARDAR" actionListener="#{comidaC.registrar()}" update=":dos,mensaje"/>
+        </h:form>
+
+        <!--LISTAR COMIDA-->
+
+        <h:form id="dos">
+            <p:dataTable value="#{comidaC.listaComida}" rows="10" paginator="true" var="lista" id="LDatos">
+                <p:column headerText="Combos" 
+                          sortBy="#{lista.COMBO}"                       
+                          style="font-weight: bold">
+                    <h:outputLabel value="#{lista.COMBO}" style="font-weight: normal" />
+                </p:column>
+                <p:column headerText="Precios" 
+                          sortBy="#{lista.PRECIO}"                       
+                          style="font-weight: bold">
+                    <h:outputLabel value="#{lista.PRECIO}" style="font-weight: normal" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+
+</html>
